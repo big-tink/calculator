@@ -48,13 +48,34 @@ clearButton.addEventListener('click', () => {
 
 const divideButton = document.querySelector('.divide');
 divideButton.addEventListener('click', () => {
-    firstNumber = parseFloat(displayValue);
-    displayValue = '';
-    operator = '/';
-    display.value = displayValue;
+    if (operator === '') {
+        firstNumber = parseFloat(displayValue);
+        displayValue = '';
+        operator = '/';
+        display.value = displayValue;
+    } else {
+        displayValue = '';
+        operator = '/';
+        display.value = displayValue;
+    }
 });
 
 const multiplyButton = document.querySelector('.multiply');
+multiplyButton.addEventListener('click', () => {
+    if (operator === '') {
+        firstNumber = parseFloat(displayValue);
+        displayValue = '';
+        operator = '*';
+        display.value = displayValue;
+    } else if (firstNumber !== '') {
+        secondNumber = parseFloat(displayValue);
+        operator = '*';
+        operate(firstNumber, secondNumber, operator);
+    } else {
+        operate(firstNumber, secondNumber, operator)
+    }
+});
+
 const minusButton = document.querySelector('.minus');
 const plusButton = document.querySelector('.plus');
 
@@ -68,13 +89,8 @@ decimalButton.addEventListener('click', () => {
 const equalButton = document.querySelector('.equal');
 equalButton.addEventListener('click', () => {
     secondNumber = parseFloat(displayValue);
-    if (operator === '/') {
-        division(firstNumber, secondNumber);
-        firstNumber = displayValue;
-        displayValue = '';
-    }
-
-})
+    operate(firstNumber, secondNumber, operator);
+});
 
 
 function addition(a, b) {
@@ -86,7 +102,10 @@ function subtraction(a, b) {
 };
 
 function multiplication(a, b) {
-    return a * b;
+    displayValue = a * b;
+    firstNumber = displayValue;
+    display.value = displayValue;
+    displayValue = '';
 };
 
 function division(a, b) {
@@ -105,9 +124,11 @@ function operate(firstNumber, secondNumber, operator) {
     } else if (operator === '-') {
         return subtraction(firstNumber, secondNumber);
     } else if (operator === '*') {
-        return multiplication(firstNumber, secondNumber);
+        multiplication(firstNumber, secondNumber);
     } else if (operator === '/') {
-        return division(firstNumber, secondNumber)
+        division(firstNumber, secondNumber);
+        firstNumber = displayValue;
+        displayValue = '';
     };
 };
 
