@@ -47,6 +47,13 @@ clearButton.addEventListener('click', () => {
 });
 
 const divideButton = document.querySelector('.divide');
+divideButton.addEventListener('click', () => {
+    firstNumber = parseFloat(displayValue);
+    displayValue = '';
+    operator = '/';
+    display.value = displayValue;
+});
+
 const multiplyButton = document.querySelector('.multiply');
 const minusButton = document.querySelector('.minus');
 const plusButton = document.querySelector('.plus');
@@ -59,6 +66,15 @@ decimalButton.addEventListener('click', () => {
 });
 
 const equalButton = document.querySelector('.equal');
+equalButton.addEventListener('click', () => {
+    secondNumber = parseFloat(displayValue);
+    if (operator === '/') {
+        division(firstNumber, secondNumber);
+        firstNumber = displayValue;
+        displayValue = '';
+    }
+
+})
 
 
 function addition(a, b) {
@@ -75,10 +91,12 @@ function multiplication(a, b) {
 
 function division(a, b) {
     if (b === 0) {
-        return 'Error'
+        displayValue = 'Error'
     } else {
-        return a / b;
+        displayValue = a / b;
     }
+
+    display.value = displayValue;
 };
 
 function operate(firstNumber, secondNumber, operator) {
