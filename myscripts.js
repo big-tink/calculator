@@ -11,6 +11,8 @@ const oneButton = document.querySelector('.one');
 oneButton.addEventListener('click', () => display.value = displayValue += '1');
 
 const twoButton = document.querySelector('.two');
+twoButton.addEventListener('click', () => display.value = displayValue += '2');
+
 const threeButton = document.querySelector('.three');
 const fourButton = document.querySelector('.four');
 const fiveButton = document.querySelector('.five');
@@ -19,7 +21,16 @@ const sevenButton = document.querySelector('.seven');
 const eightButton = document.querySelector('.eight');
 const nineButton = document.querySelector('.nine');
 const zeroButton = document.querySelector('.zero');
+
 const clearButton = document.querySelector('.clear');
+clearButton.addEventListener('click', () => {
+    firstNumber = '';
+    secondNumber = '';
+    operator = '';
+    displayValue = '';
+    display.value = displayValue;
+});
+
 const divideButton = document.querySelector('.divide');
 const multiplyButton = document.querySelector('.multiply');
 const minusButton = document.querySelector('.minus');
@@ -60,5 +71,11 @@ function operate(firstNumber, secondNumber, operator) {
     };
 };
 
-
+function clearAll() {
+    firstNumber = '';
+    secondNumber = '';
+    operator = '';
+    displayValue = '1';
+    display.value = displayValue;
+};
     
