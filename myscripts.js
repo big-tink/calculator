@@ -8,6 +8,8 @@ const display = document.querySelector('input');
 display.value = displayValue;
 
 const oneButton = document.querySelector('.one');
+oneButton.addEventListener('click', () => display.value = displayValue += '1');
+
 const twoButton = document.querySelector('.two');
 const threeButton = document.querySelector('.three');
 const fourButton = document.querySelector('.four');
