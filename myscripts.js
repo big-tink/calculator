@@ -52,7 +52,11 @@ const minusButton = document.querySelector('.minus');
 const plusButton = document.querySelector('.plus');
 
 const decimalButton = document.querySelector('.decimal');
-decimalButton.addEventListener('click', () => display.value = displayValue += '.');
+decimalButton.addEventListener('click', () => {
+    if (!displayValue.includes('.')) {
+        display.value = displayValue += '.'
+    }
+});
 
 const equalButton = document.querySelector('.equal');
 
