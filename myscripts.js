@@ -1,7 +1,6 @@
 let firstNumber;
 let operator;
 let secondNumber;
-let carryOverResult;
 
 let displayValue = '';
 
@@ -54,6 +53,8 @@ divideButton.addEventListener('click', () => {
         displayValue = '';
         operator = '/';
         display.value = displayValue;
+    } else if (displayValue === '') {
+        operator = '/';
     } else {
         secondNumber = parseFloat(displayValue);
         operate(firstNumber, secondNumber, operator);
@@ -68,6 +69,8 @@ multiplyButton.addEventListener('click', () => {
         displayValue = '';
         operator = '*';
         display.value = displayValue;
+    } else if (displayValue === '') {
+        operator = '*'
     } else {
         secondNumber = parseFloat(displayValue);
         operate(firstNumber, secondNumber, operator);
@@ -76,7 +79,36 @@ multiplyButton.addEventListener('click', () => {
 });
 
 const minusButton = document.querySelector('.minus');
+minusButton.addEventListener('click', () => {
+    if (operator === '') {
+        firstNumber = parseFloat(displayValue);
+        displayValue = '';
+        operator = '-';
+        display.value = displayValue;
+    } else if (displayValue === '') {
+        operator = '-'
+    } else {
+        secondNumber = parseFloat(displayValue);
+        operate(firstNumber, secondNumber, operator);
+        operator = '-'
+    }
+});
+
 const plusButton = document.querySelector('.plus');
+plusButton.addEventListener('click', () => {
+    if (operator === '') {
+        firstNumber = parseFloat(displayValue);
+        displayValue = '';
+        operator = '+';
+        display.value = displayValue;
+    } else if (displayValue === '') {
+        operator = '+'
+    } else {
+        secondNumber = parseFloat(displayValue);
+        operate(firstNumber, secondNumber, operator);
+        operator = '+'
+    }
+});
 
 const decimalButton = document.querySelector('.decimal');
 decimalButton.addEventListener('click', () => {
@@ -93,11 +125,17 @@ equalButton.addEventListener('click', () => {
 
 
 function addition(a, b) {
-return a + b;
+    displayValue = a + b;
+    firstNumber = parseFloat(displayValue);
+    display.value = displayValue;
+    displayValue = '';
 };
 
 function subtraction(a, b) {
-    return a - b;
+    displayValue = a - b;
+    firstNumber = parseFloat(displayValue);
+    display.value = displayValue;
+    displayValue = '';
 };
 
 function multiplication(a, b) {
