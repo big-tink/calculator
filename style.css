@@ -8,6 +8,7 @@ body {
     align-items: center;
     height: 100vh;
     width: 100vw;
+    background-image: radial-gradient(circle, rgb(88, 88, 88), black) ;
 }
 
 .calculator {
@@ -19,7 +20,7 @@ body {
     flex-shrink: 0;
     border: 20px rgb(0, 0, 0) solid;
     border-radius: 40px;
-    box-shadow: 10px 5px 5px rgb(167, 167, 167);
+    box-shadow: 10px 5px 5px rgb(110, 110, 110);
 }
 
 input {
@@ -40,6 +41,7 @@ button {
     padding: 0;
     border-radius: 10px;
     font-size: 35px;
+    box-shadow: 1px 1px 5px rgb(110, 110, 110);
 }
 
 .number {

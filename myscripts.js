@@ -119,8 +119,12 @@ decimalButton.addEventListener('click', () => {
 
 const equalButton = document.querySelector('.equal');
 equalButton.addEventListener('click', () => {
+    if (displayValue === '') {
+        // do nothing if a second value is not entered yet
+    } else {
     secondNumber = parseFloat(displayValue);
     operate(firstNumber, secondNumber, operator);
+    }
 });
 
 
@@ -147,7 +151,7 @@ function multiplication(a, b) {
 
 function division(a, b) {
     if (b === 0) {
-        displayValue = 'Error'
+        displayValue = 'Not Allowed'
     } else {
         displayValue = a / b;
         firstNumber = parseFloat(displayValue);
