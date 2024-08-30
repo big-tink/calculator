@@ -119,7 +119,9 @@ decimalButton.addEventListener('click', () => {
 
 const equalButton = document.querySelector('.equal');
 equalButton.addEventListener('click', () => {
-    if (displayValue === '') {
+    if (displayValue === '' && secondNumber !== '') {
+        operate(firstNumber, secondNumber, operator)
+    } else if (displayValue === '') {
         // do nothing if a second value is not entered yet
     } else {
     secondNumber = parseFloat(displayValue);
