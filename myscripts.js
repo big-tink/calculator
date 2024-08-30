@@ -1,6 +1,7 @@
 let firstNumber;
 let operator;
 let secondNumber;
+let carryOverResult;
 
 let displayValue = '';
 
@@ -54,9 +55,9 @@ divideButton.addEventListener('click', () => {
         operator = '/';
         display.value = displayValue;
     } else {
-        displayValue = '';
+        secondNumber = parseFloat(displayValue);
+        operate(firstNumber, secondNumber, operator);
         operator = '/';
-        display.value = displayValue;
     }
 });
 
@@ -67,12 +68,10 @@ multiplyButton.addEventListener('click', () => {
         displayValue = '';
         operator = '*';
         display.value = displayValue;
-    } else if (firstNumber !== '') {
-        secondNumber = parseFloat(displayValue);
-        operator = '*';
-        operate(firstNumber, secondNumber, operator);
     } else {
-        operate(firstNumber, secondNumber, operator)
+        secondNumber = parseFloat(displayValue);
+        operate(firstNumber, secondNumber, operator);
+        operator = '*'
     }
 });
 
@@ -103,7 +102,7 @@ function subtraction(a, b) {
 
 function multiplication(a, b) {
     displayValue = a * b;
-    firstNumber = displayValue;
+    firstNumber = parseFloat(displayValue);
     display.value = displayValue;
     displayValue = '';
 };
@@ -113,9 +112,11 @@ function division(a, b) {
         displayValue = 'Error'
     } else {
         displayValue = a / b;
+        firstNumber = parseFloat(displayValue);
     }
 
     display.value = displayValue;
+    displayValue = '';
 };
 
 function operate(firstNumber, secondNumber, operator) {
@@ -127,8 +128,6 @@ function operate(firstNumber, secondNumber, operator) {
         multiplication(firstNumber, secondNumber);
     } else if (operator === '/') {
         division(firstNumber, secondNumber);
-        firstNumber = displayValue;
-        displayValue = '';
     };
 };
 
@@ -136,7 +135,8 @@ function clearAll() {
     firstNumber = '';
     secondNumber = '';
     operator = '';
-    displayValue = '1';
+    displayValue = '';
     display.value = displayValue;
 };
     
+clearAll();
