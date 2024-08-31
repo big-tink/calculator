@@ -48,7 +48,7 @@ clearButton.addEventListener('click', () => {
 
 const backspaceButton = document.querySelector('.backspace');
 backspaceButton.addEventListener('click', () => {
-    displayValue = displayValue.slice(1);
+    displayValue = displayValue.substring(0, displayValue.length - 1);
     display.value = displayValue;
 });
 
@@ -231,7 +231,7 @@ window.addEventListener("keydown", (e) => {
     }
   
     if (e.key === "Backspace") {
-        displayValue = displayValue.slice(1);
+        displayValue = displayValue.substring(0, displayValue.length - 1);
         display.value = displayValue;
     }
   
