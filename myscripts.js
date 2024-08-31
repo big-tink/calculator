@@ -37,12 +37,18 @@ nineButton.addEventListener('click', () => display.value = displayValue += '9');
 const zeroButton = document.querySelector('.zero');
 zeroButton.addEventListener('click', () => display.value = displayValue += '0');
 
-const clearButton = document.querySelector('.clear');
+const clearButton = document.querySelector('.clearAll');
 clearButton.addEventListener('click', () => {
     firstNumber = '';
     secondNumber = '';
     operator = '';
     displayValue = '';
+    display.value = displayValue;
+});
+
+const backspaceButton = document.querySelector('.backspace');
+backspaceButton.addEventListener('click', () => {
+    displayValue = displayValue.slice(1);
     display.value = displayValue;
 });
 
@@ -133,21 +139,21 @@ equalButton.addEventListener('click', () => {
 function addition(a, b) {
     displayValue = a + b;
     firstNumber = parseFloat(displayValue);
-    display.value = displayValue;
+    display.value = parseFloat(displayValue.toPrecision(9));
     displayValue = '';
 };
 
 function subtraction(a, b) {
     displayValue = a - b;
     firstNumber = parseFloat(displayValue);
-    display.value = displayValue;
+    display.value = parseFloat(displayValue.toPrecision(9));
     displayValue = '';
 };
 
 function multiplication(a, b) {
     displayValue = a * b;
     firstNumber = parseFloat(displayValue);
-    display.value = displayValue;
+    display.value = parseFloat(displayValue.toPrecision(9));
     displayValue = '';
 };
 
@@ -159,7 +165,7 @@ function division(a, b) {
         firstNumber = parseFloat(displayValue);
     }
 
-    display.value = displayValue;
+    display.value = parseFloat(displayValue.toPrecision(9));
     displayValue = '';
 };
 
