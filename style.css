@@ -46,7 +46,7 @@ button {
 
 .number {
     background-color: rgb(34, 34, 34);
-    color: rgb(240, 248, 255);
+    color: rgb(250, 240, 228);
 }
 
 .number:active {
@@ -60,7 +60,7 @@ button {
     color: rgb(255, 235, 205);
 }
 
-.clear:active {
+.clearAll:active, .backspace:active {
     background-color: rgb(92, 46, 46);
 }
 

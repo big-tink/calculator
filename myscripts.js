@@ -190,3 +190,56 @@ function clearAll() {
 };
     
 clearAll();
+
+// below adds keyboard functionality
+
+window.addEventListener("keydown", (e) => {
+    if (e.key >= "0" && e.key <= "9") {
+      display.value = displayValue += e.key;
+    }
+  
+    if (e.key === ".") {
+        if (!displayValue.includes('.')) {
+            display.value = displayValue += '.'
+        }
+    }
+  
+    if (e.key === "+" || e.key === "-" || e.key === "*" || e.key === "/") {
+        if (operator === '') {
+            firstNumber = parseFloat(displayValue);
+            displayValue = '';
+            operator = e.key;
+            display.value = displayValue;
+        } else if (displayValue === '') {
+            operator = e.key
+        } else {
+            secondNumber = parseFloat(displayValue);
+            operate(firstNumber, secondNumber, operator);
+            operator = e.key
+        }
+    }
+  
+    if (e.key === "Enter" || e.key === "=") {
+        if (displayValue === '' && secondNumber !== '') {
+            operate(firstNumber, secondNumber, operator)
+        } else if (displayValue === '') {
+            // do nothing if a second value is not entered yet
+        } else {
+        secondNumber = parseFloat(displayValue);
+        operate(firstNumber, secondNumber, operator);
+        }
+    }
+  
+    if (e.key === "Backspace") {
+        displayValue = displayValue.slice(1);
+        display.value = displayValue;
+    }
+  
+    if (e.key === "Escape" || e.key === 'Clear') {
+        firstNumber = '';
+        secondNumber = '';
+        operator = '';
+        displayValue = '';
+        display.value = displayValue;
+    }
+  });
